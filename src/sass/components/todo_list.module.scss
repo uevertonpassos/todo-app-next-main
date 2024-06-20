@@ -1,0 +1,202 @@
+@use "../utils" as *;
+.todolist{
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  &__list{
+    list-style-type: none;
+    background-color: #fff;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    &--dark{
+      background-color: $vd-desaturated-blue;
+    }
+    &__item{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+      border-bottom: 1px solid $l-light-grayish-blue;
+      word-break: break-word;
+      &--dark{
+        border-color: $d-v-grayish-blue2;
+      }
+      .box{
+        display: flex;
+        align-items: center;
+        &__text{
+          margin-left: .5em;
+          &--dark{
+            color: $d-light-grayish-blue;
+          }
+        }
+        &__checkbox{
+          margin: 0;
+          width: 20px;
+          height: 20px;
+          display: grid;
+          place-content: center;
+          border: 1px solid $l-light-grayish-blue;
+          border-radius: 50%;
+          appearance: none;
+          background-color: #fff;
+          cursor: pointer;
+          &::before{
+            content: url("../../images/icon-check.svg");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-image: $checkbox-bg;
+            transform: scale(0);
+            transition: transform .15s;
+          }
+          &:checked::before{
+            transform: scale(1);
+          }
+          &:checked + .box__text{
+            text-decoration: line-through;
+            color: $d-v-grayish-blue2;
+          }
+          &:hover{
+            background: linear-gradient(white, white) padding-box,
+            $checkbox-bg border-box;
+          }
+          &--dark{
+            border-color: $d-v-grayish-blue;
+            background-color: $vd-desaturated-blue;
+            &:hover{
+              background: linear-gradient($vd-desaturated-blue, $vd-desaturated-blue) padding-box,
+              $checkbox-bg border-box;
+            }
+          }
+        }
+      }
+      button{
+        padding: .15em;
+        border: 1px solid transparent;
+        background: none;
+        cursor: pointer;
+      }
+    }
+    &__fallback{
+      padding: 1em 0;
+      text-align: center;
+      &--dark{
+        color: #ffffff;
+      }
+    }
+  }
+  &__summary{
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.6rem;
+    background-color: #fff;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 0 3px 7px rgba(0,0,0,.2);
+    &--dark{
+      background-color: $vd-desaturated-blue;
+    }
+    &__left{
+      color: $l-dark-grayish-blue;
+      &--dark{
+        color: $d-dark-grayish-blue;
+      }
+    }
+    &__actions{
+      &__action{
+        margin: 0 .45em;
+        padding: .25em;
+        background: none;
+        border: none;
+        font-family: $family;
+        font-size: 1.6rem;
+        color: $l-dark-grayish-blue;
+        display: none;
+        cursor: pointer;
+        transition: color .1s;
+        @include respond-to('s'){
+          display: inline-block;
+        }
+        &:hover{
+          color: $l-v-dark-grayish-blue;
+        }
+        &--dark{
+          color: $d-dark-grayish-blue;
+          &:hover{
+            color: $dh-light-grayish-blue;
+          }
+        }
+        &--active{
+          color: $bright-blue;
+        }
+      }
+    }
+    &__clear{
+      color: $l-dark-grayish-blue;
+      cursor: pointer;
+      transition: color .1s;
+      &:hover{
+        color: $l-v-dark-grayish-blue;
+      }
+      &--dark{
+        color: $d-dark-grayish-blue;
+        &:hover{
+          color: $dh-light-grayish-blue;
+        }
+      }
+    }
+  }
+  &__action-box{
+    margin-top: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    @include respond-to('s'){
+      display: none;
+    }
+    &--dark{
+      background-color: $vd-desaturated-blue;
+    }
+    &__action{
+      margin: 0 .45em;
+      padding: .25em;
+      background: none;
+      border: none;
+      font-family: $family;
+      font-size: $normal;
+      color: $l-dark-grayish-blue;
+      transition: color .1s;
+      cursor: pointer;
+      &:hover{
+        color: $l-v-dark-grayish-blue;
+      }
+      &--dark{
+        color: $d-dark-grayish-blue;
+        &:hover{
+          color: $dh-light-grayish-blue;
+        }
+      }
+      &--active{
+        color: $bright-blue;
+      }
+    }
+  }
+  &__info{
+    margin: 1.75em 0;
+    text-align: center;
+    color: $l-dark-grayish-blue;
+  }
+}

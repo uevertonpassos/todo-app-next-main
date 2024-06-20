@@ -1,0 +1,72 @@
+@use "../utils" as *;
+.header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 45vh;
+  background-image: url('../../images/bg-mobile-light.jpg');
+  background-size: cover;
+  background-position: center;
+  @include respond-to('l'){
+    background-image: url('../../images/bg-desktop-light.jpg');
+  }
+  &--dark{
+    background-image: url('../../images/bg-mobile-dark.jpg');
+    @include respond-to('l'){
+      background-image: url('../../images/bg-desktop-dark.jpg');
+    }
+  }
+  &__head{
+    margin: 3em 1.25em;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    &__heading{
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      color: $v-light-gray;
+    }
+    &__switch{
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .form-box{
+    width: 90%;
+    max-width: 800px;
+  }
+  &__form{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    &__input-box{
+      padding: 1em 2em;
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-between;
+      background-color: $v-light-gray;
+      border-radius: 8px;
+      &::before{
+        content: '';
+        position: absolute;
+        top: 26px;
+        left: 28px;
+        transform: translate(-50%,-50%);
+        width: 20px;
+        height: 20px;
+        border: 1px solid $l-light-grayish-blue;
+        border-radius: 50%;
+      }
+      &--dark{
+        background-color: $vd-desaturated-blue;
+        &::before{
+          border-color: $d-v-grayish-blue;
+        }
+      }
+    }
+  }
+}

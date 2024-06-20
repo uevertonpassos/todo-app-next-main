@@ -1,0 +1,22 @@
+@use "../utils" as *;
+*,*::before,*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  font-size: 1.8rem;
+  font-family: 'Josefin Sans', sans-serif;
+}
+main{
+  position: relative;
+  min-height: 100vh;
+  background-color: $v-light-gray;
+  overflow-y: scroll;
+}
+.dark{
+  background-color: $v-dark-blue;
+}
